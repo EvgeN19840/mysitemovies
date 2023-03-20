@@ -19,7 +19,7 @@ const CategoryPage = () => {
     <div className="category-page">
       <div className="category-page-items">
         <div className="category-page-text">
-           <span>Second Page!!!!!!!!!!!!!!</span>
+           <span>Second Page</span>
         </div>
         <div className="itemtext">
           {newsList.length > 0 && <NewsList list={newsList.slice(0, 20)} />}
