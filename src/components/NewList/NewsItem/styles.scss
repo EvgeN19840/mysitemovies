@@ -1,0 +1,101 @@
+.wrap-setitem {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #333333;
+  padding-left: auto;
+  padding-right: auto;
+
+
+}
+
+.name-movis,
+p {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.poster-movis {
+  position: relative;
+  z-index: 800;
+  width: 180px !important;
+  height: 260px !important;
+  border-radius: 10px;
+
+}
+.hover-div {
+  opacity:0;
+  flex-direction: column;
+  width: 180px;
+  height: 260px;
+  border-radius: 10px;
+  color: #fff;
+  position: absolute;
+  z-index: 900;
+  margin-top: -265px;
+
+
+
+}
+.about-movis-wrap :hover .hover-div {
+  opacity:1;
+  background: rgba(25, 22, 22, 0.6);
+  transition-duration: 0.6s;
+
+  
+}
+
+.rating-average {
+  display: flex;
+  align-items: center;
+  margin-top: 130px;
+  margin-left: 20px;
+}
+.rating-average-second {
+  font-family: "Lilita One", cursive;
+  font-size: 24px;
+
+
+}
+.rating-average-first {
+  font-family: "Lilita One", cursive;
+  font-size: 32px;
+}
+
+.runtime,
+.country-code {
+  font-family: "Lilita One", cursive;
+  font-size: 20px;
+  margin-left: 20px;
+}
+.runtime{
+  margin-top: 10px;
+}
+.country-code{
+  margin-top: 20px;
+}
+.filmold {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+}
+.movies-name-old {
+  display: flex;
+  justify-content: space-between;
+  max-width: 179px;
+}
+.genres-movis {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  padding-top: 5px;
+
+}
