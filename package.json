@@ -2,8 +2,8 @@
   "name": "mysitemovies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://EvgeN19840.github.io/mysitemovies",
-  "dependencies": {
+  "homepage": "https://evgen19840.github.io/mysitemovies",
+    "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
