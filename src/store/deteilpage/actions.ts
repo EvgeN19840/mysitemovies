@@ -16,6 +16,6 @@ export const loadMovisDeteilPage =
       const response = await getOneNews(id);
       dispatch(setMoviesDeteilPage(response.data));
     } catch (e) {
-      console.log(e, "у нас проблемы!!!!");
+ 
     }
   };
