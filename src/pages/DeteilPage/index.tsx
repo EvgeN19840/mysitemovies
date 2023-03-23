@@ -19,31 +19,30 @@ const DeteilPage = () => {
   useEffect(() => {
     dispatch(loadMovisDeteilPage(id));
   }, [dispatch]);
-let country = news.network?.country?.name && news.network.country.name;
+  let country = news.network?.country?.name && news.network.country.name;
   return (
     <section className="container newsPostItem">
       {news.id ? (
         <div className="newsDeteilWrapper">
-                  
           <img className="imgdet" src={news.image.medium} alt={"poster"} />
-
 
           <div className="wrapDeteilPage">
             <div className="movis-name-deteil">{news.name}</div>
             <div className="starrat">
-            <img className="img-star-deteil" src={star} alt={"star"} />
-            <div className="rating">{news.rating.average}</div>
-          </div>
+              <img className="img-star-deteil" src={star} alt={"star"} />
+              <div className="rating">{news.rating.average}</div>
+            </div>
             <div className="movis-old">
-              <div className="style-name-old">Год выхода:</div> {news.premiered.slice(0, 4)}
+              <div className="style-name-old">Год выхода:</div>{" "}
+              {news.premiered.slice(0, 4)}
             </div>
             <div className="movis-country-deteil">
-              <div className="style-name-country"> Страна: </div>{" "}
-              {country}
+              <div className="style-name-country"> Страна: </div> {country}
             </div>
 
             <div className="movis-genres-deteil">
-              <div className="style-name-genres"> Жанр:</div> {news.genres.join(", ")}{" "}
+              <div className="style-name-genres"> Жанр:</div>{" "}
+              {news.genres.join(", ")}{" "}
             </div>
 
             <div className="movis-language-deteil">
@@ -51,7 +50,8 @@ let country = news.network?.country?.name && news.network.country.name;
             </div>
 
             <div className="movis-summary-deteil">
-              <div className="style-name-summary">Описание:</div> {news.summary.replace(/[</p>]/gi, '')}
+              <div className="style-name-summary">Описание:</div>{" "}
+              {news.summary.replace(/[</p>]/gi, "")}
             </div>
           </div>
         </div>
