@@ -27,6 +27,7 @@ p {
   width: 180px !important;
   height: 260px !important;
   border-radius: 10px;
+  box-shadow: 0 -1px 3px 1px rgba(0,0,0,0.7);
 
 }
 .hover-div {
@@ -39,8 +40,8 @@ p {
   position: absolute;
   z-index: 900;
   margin-top: -265px;
-
-
+  -webkit-transition-duration: 1s;
+ 
 
 }
 .about-movis-wrap :hover .hover-div {

@@ -6,12 +6,12 @@
   min-height: calc(100vh - 100px);
 }
 .cont {
-  width: 1230px;
+  max-width: 1230px;
   min-height: 352px;
-  background: #ffffff;
+  background: #ebebeb;
   border-radius: 20px;
-  margin-top: 90px;
-
+  margin-top: 80px;
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.2);
 
   padding-left: 40px;
   margin-bottom: 600px;

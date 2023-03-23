@@ -17,12 +17,11 @@ const CategoryPage = () => {
   }, [dispatch]);
   return (
     <div className="category-page">
+                   <div className="secondpage-text">Текущая категоря GIRLS</div>
       <div className="category-page-items">
-        <div className="category-page-text">
-           <span>Second Page</span>
-        </div>
+
         <div className="itemtext">
-          {newsList.length > 0 && <NewsList list={newsList.slice(0, 20)} />}
+          {newsList.length > 0 && <NewsList list={newsList.slice(0, 8)} />}
         </div>
       </div>
     </div>

@@ -8,34 +8,48 @@ import { routeCategory as routeCategoryPage } from "../../pages/CategoryPage";
 import { routeSearch as routeSearchPage } from "../../pages/SearchPage";
 import newlogo from "../../pictures/newlogo.png";
 
-
-
 const Header = () => {
   return (
     <header>
       <div className="navbar">
         <div className="container">
-        <div className="logo-header">
-        <div className="logo-circle"/>
-        <div className="logo-text">MOVIESinfo</div>
-         </div>
+          <div className="logo-header">
+            <div className="logo-circle" />
+            <div className="logo-text">MOVIESinfo</div>
+          </div>
 
           <div className="navbar-link">
             <nav>
-              <NavLink className="navbar-link-button" to={routeMainPage()} activeClassName={"linkActive"}>
+              <NavLink
+                className="navbar-link-button"
+                to={routeMainPage()}
+                activeClassName={"linkActive"}
+              >
                 Главная
               </NavLink>
-              <NavLink className="navbar-link-button" to={routeCategoryPage()} activeClassName={"linkActive"}>
+              <NavLink
+                className="navbar-link-button"
+                to={routeCategoryPage()}
+                activeClassName={"linkActive"}
+              >
                 Фильмы по категориям
               </NavLink>
-              <NavLink className="navbar-link-button" to={routeContactPage()} activeClassName={"linkActive"}>
-                О нас
-              </NavLink>
-              <NavLink className="navbar-link-button" to={routeSearchPage()} activeClassName={"linkActive"}>
+
+              <NavLink
+                className="navbar-link-button"
+                to={routeSearchPage()}
+                activeClassName={"linkActive"}
+              >
                 Поиск
               </NavLink>
+              <NavLink
+                className="navbar-link-button"
+                to={routeContactPage()}
+                activeClassName={"linkActive"}
+              >
+                О нас
+              </NavLink>
             </nav>
-
           </div>
         </div>
       </div>

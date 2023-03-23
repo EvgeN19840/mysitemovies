@@ -31,8 +31,9 @@ const SearchPage = () => {
   return (
     <div className="wrapsearch">
       <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="searchcategory">Поиск по названию</div>
         <div className=" clearfon">
-          <div className="searchcategory">Поиск по названию</div>
+      
           <input
             className="searchinput"
             {...register("name")}

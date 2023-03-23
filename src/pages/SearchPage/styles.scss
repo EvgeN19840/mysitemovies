@@ -6,14 +6,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.2);
   max-width: 1230px;
-  background: #ffffff;
+  background: #ebebeb;
   border-radius: 20px;
   padding-top: 10px;
-
-  margin-top: 90px;
-
   margin-left: auto;
   margin-right: auto;
 }
@@ -27,14 +24,17 @@
   font-style: normal;
   font-weight: 700;
   font-size: 30px;
-  color: #333333;
+  color: #f3c8c8;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  text-align: center;
 }
 .searchinput {
   max-width: 750px;
 
   height: 40px;
   font-size: 15px;
-  padding-left: 35px;
+  padding-left: 15px;
   margin-top: 18px;
   border: 1px solid #888888;
   border-radius: 20px;

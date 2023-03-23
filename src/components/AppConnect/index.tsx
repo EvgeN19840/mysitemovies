@@ -23,10 +23,10 @@ const AppConnect = () => {
         <Header />
         <Switch>
           <Route exact path={routeDeteilPage()} component={DeteilPage} />
-          <Route exact path={routeContactPage()} component={ContactPage} />
           <Route exact path={routeMainPage()} component={MainPage} />
           <Route exact path={routeCategoryPage()} component={CategoryPage} />
           <Route exact path={routeSearchPage()} component={SearchPage} />
+          <Route exact path={routeContactPage()} component={ContactPage} />
           <Redirect
             to={{
               pathname: routeMainPage(),
