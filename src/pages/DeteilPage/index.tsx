@@ -19,7 +19,7 @@ const DeteilPage = () => {
   useEffect(() => {
     dispatch(loadMovisDeteilPage(id));
   }, [dispatch]);
-
+let country = news.network?.country?.name && news.network.country.name;
   return (
     <section className="container newsPostItem">
       {news.id ? (
@@ -39,7 +39,7 @@ const DeteilPage = () => {
             </div>
             <div className="movis-country-deteil">
               <div className="style-name-country"> Страна: </div>{" "}
-              {news.network.country.name}
+              {country}
             </div>
 
             <div className="movis-genres-deteil">

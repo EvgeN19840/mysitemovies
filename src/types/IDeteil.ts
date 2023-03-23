@@ -1,5 +1,4 @@
 export interface IDeteil {
-
   id: string;
   name: string;
   summary: string;

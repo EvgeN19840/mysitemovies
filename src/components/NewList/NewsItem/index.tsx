@@ -28,15 +28,10 @@ const NewsItem: React.FC<INewsItemParams> = ({ item }) => {
     countryCode = item.network?.country.code || countryCode;
   }
 
-
- let countryName =
+  let countryName =
     countryCode && setCountryCode[countryCode]
       ? setCountryCode[countryCode]
       : countryCode || "no country code";
-
-
-
-
 
   let src = item?.show?.image?.medium || "default-image.jpg";
 
@@ -67,22 +62,20 @@ const NewsItem: React.FC<INewsItemParams> = ({ item }) => {
     genres = item.genres.join(", ") || genres;
   }
 
-let premiered = item?.show?.premiered?.slice(0, 4);
-if (item?.premiered?.slice(0, 4)) {
-  premiered = item.premiered.slice(0, 4 )|| premiered;
-}
+  let premiered = item?.show?.premiered?.slice(0, 4);
+  if (item?.premiered?.slice(0, 4)) {
+    premiered = item.premiered.slice(0, 4) || premiered;
+  }
 
-let runtime = item?.show?.runtime;
-if (item?.runtime) {
-  runtime = item.runtime|| runtime;
+  let runtime = item?.show?.runtime;
+  if (item?.runtime) {
+    runtime = item.runtime || runtime;
+  }
 
-}
-
-let id = item?.show?.id
-if (item?.id) {
-  id = item.id|| id;
-
-}
+  let id = item?.show?.id;
+  if (item?.id) {
+    id = item.id || id;
+  }
   return (
     <NavLink className="wrap-setitem" to={routeDeteil(id)}>
       <div className="about-movis-wrap">
@@ -94,9 +87,7 @@ if (item?.id) {
               <div className="rating-average-second">{ratingAverageSecond}</div>
             </div>
             <div className="country-code">{countryName}</div>
-            <div className="runtime">
-              {runtime + " мин."}
-            </div>
+            <div className="runtime">{runtime + " мин."}</div>
           </div>
         </figure>
       </div>
