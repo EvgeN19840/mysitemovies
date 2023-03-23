@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import routeDeteil from "./routes";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,55 +15,75 @@ const DeteilPage = () => {
   const { id } = useParams<ID>();
   const dispatch = useDispatch<TypedDispatch>();
   const news = useSelector(getDeteilFilms);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(loadMovisDeteilPage(id));
-  }, [dispatch]);
+    const fetchNews = async () => {
+      try {
+        await dispatch(loadMovisDeteilPage(id));
+        setIsLoading(false);
+      } catch (e) {
+        setIsLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, [dispatch, id]);
+
   let country = news.network?.country?.name && news.network.country.name;
+
   return (
     <section className="container newsPostItem">
-      {news.id ? (
-        <div className="newsDeteilWrapper">
-          <img className="imgdet" src={news.image.medium} alt={"poster"} />
-
-          <div className="wrapDeteilPage">
-            <div className="movis-name-deteil">{news.name}</div>
-            <div className="starrat">
-              <img className="img-star-deteil" src={star} alt={"star"} />
-              <div className="rating">{news.rating.average}</div>
-            </div>
-            <div className="movis-old">
-              <div className="style-name-old">Год выхода:</div>{" "}
-              {news.premiered.slice(0, 4)}
-            </div>
-            <div className="movis-country-deteil">
-              <div className="style-name-country"> Страна: </div> {country}
-            </div>
-
-            <div className="movis-genres-deteil">
-              <div className="style-name-genres"> Жанр:</div>{" "}
-              {news.genres.join(", ")}{" "}
-            </div>
-
-            <div className="movis-language-deteil">
-              <div className="style-name-language"> Язык:</div> {news.language}{" "}
-            </div>
-
-            <div className="movis-summary-deteil">
-              <div className="style-name-summary">Описание:</div>{" "}
-              {news.summary.replace(/[</p>]/gi, "")}
-            </div>
-          </div>
+      {isLoading ? (
+        <div className="lds-spinner">
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       ) : (
         <>
-          {" "}
-          <h2>ERROR</h2>{" "}
+          {news.id ? (
+            <div className="newsDeteilWrapper">
+              <img className="imgdet" src={news.image.medium} alt={"poster"} />
+
+              <div className="wrapDeteilPage">
+                <div className="movis-name-deteil">{news.name}</div>
+                <div className="starrat">
+                  <img className="img-star-deteil" src={star} alt={"star"} />
+                  <div className="rating">{news.rating.average}</div>
+                </div>
+                <div className="movis-old">
+                  <div className="style-name-old">Год выхода:</div>{" "}
+                  {news.premiered.slice(0, 4)}
+                </div>
+                <div className="movis-country-deteil">
+                  <div className="style-name-country"> Страна: </div> {country}
+                </div>
+
+                <div className="movis-genres-deteil">
+                  <div className="style-name-genres"> Жанр:</div>{" "}
+                  {news.genres.join(", ")}{" "}
+                </div>
+
+                <div className="movis-language-deteil">
+                  <div className="style-name-language"> Язык:</div>{" "}
+                  {news.language}{" "}
+                </div>
+
+                <div className="movis-summary-deteil">
+                  <div className="style-name-summary">Описание:</div>{" "}
+                  {news.summary.replace(/[</p>]/gi, "")}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <> </>
+          )}
         </>
       )}
     </section>
   );
 };
-export { routeDeteil };
 
+export { routeDeteil };
 export default DeteilPage;

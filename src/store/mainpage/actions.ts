@@ -16,6 +16,5 @@ export const loadMovisMainPage = () => async (dispatch: TypedDispatch) => {
 
     dispatch(setMoviesMainPage(response.data));
   } catch (e) {
-    console.log(e, "у нас проблемы!!!!");
   }
 };

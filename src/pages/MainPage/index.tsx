@@ -17,6 +17,7 @@ const MainPage = () => {
   useEffect(() => {
     dispatch(loadMovisMainPage());
   }, [dispatch]);
+  
 
   return (
     <main className="main-page">
