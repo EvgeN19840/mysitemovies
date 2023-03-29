@@ -12,30 +12,31 @@ import "./styles.scss";
 const MainPage = () => {
   const dispatch: TypedDispatch = useDispatch();
   const newsList = useSelector(getFilms);
-  const itemsPerPage = 20;
+  const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(10);
 
   const data = useSelector(
     (state: RootState) => state.movieReduserMainPage.list
   );
   const [currentList, setCurrentList] = useState<INews[]>([]);
-  const totalPages = Math.ceil(newsList.length / itemsPerPage);
 
   useEffect(() => {
     dispatch(loadMoviesMainPage());
   }, [dispatch]);
-  
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    if (page > 5) {
+      setTotalPages(totalPages + 1);
+    }
   };
-
 
   useEffect(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     setCurrentList(newsList.slice(startIndex, endIndex));
   }, [currentPage, itemsPerPage, newsList]);
-console.log(currentPage)
 
   return (
     <main className="main-page">
@@ -44,19 +45,17 @@ console.log(currentPage)
       </section>
       <div className="container back-main">
         {currentList.length > 0 && <NewsList list={currentList} />}
-   
       </div>
       <Pagination
-          data={data}
-          itemsPerPage={itemsPerPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          currentPage={currentPage}
-        />
+        data={data}
+        itemsPerPage={itemsPerPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        currentPage={currentPage}
+      />
     </main>
   );
 };
 
 export { routeMain };
 export default MainPage;
-

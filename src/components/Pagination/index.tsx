@@ -36,8 +36,8 @@ const Pagination = ({
   return (
     <ul className="pagin">
       <li className="prev-page">
-      <button onClick={handlePrevPageClick}>
-      back
+      <button className="button" onClick={handlePrevPageClick}>
+      Prev Page
     </button>
       </li>
       {[...Array(totalPages)].map((e, index) => (
@@ -47,15 +47,15 @@ const Pagination = ({
             onClick={(event) => {
               event.preventDefault();
               handlePageChange(index + 1);
-            }}
+            }} 
           >
-            {index + 1}
+            {index+ 1} 
           </a>
         </li>
       ))}
       <li className="next-page">
-      <button onClick={handleNextPageClick}>
-      next
+      <button className="button" onClick={handleNextPageClick}>
+      Next Page
     </button>
       </li>
     </ul>
