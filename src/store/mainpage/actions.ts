@@ -1,6 +1,5 @@
 import { TypedDispatch } from "..";
 import getNews from "../../services/getNews";
-
 import { IStore } from "./reducer";
 
 export const setMoviesMainPage = (payload: IStore["list"]) => {
@@ -10,11 +9,12 @@ export const setMoviesMainPage = (payload: IStore["list"]) => {
   };
 };
 
-export const loadMovisMainPage = () => async (dispatch: TypedDispatch) => {
-  try {
-    const response = await getNews();
 
-    dispatch(setMoviesMainPage(response.data));
-  } catch (e) {
-  }
+export const loadMoviesMainPage = () => {
+  return async (dispatch: TypedDispatch) => {
+    try {
+      const response = await getNews();
+      dispatch(setMoviesMainPage(response.data));
+    } catch (e) {}
+  };
 };

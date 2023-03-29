@@ -10,7 +10,6 @@ import { loadSearchPage } from "store/searchpage/actions";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
 
-import NewsList from "components/NewList";
 import "./styles.scss";
 import NewsListSearch from "components/NewListSearch";
 
@@ -31,26 +30,29 @@ const SearchPage = () => {
   return (
     <div className="wrapsearch">
       <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="searchcategory">Поиск по названию</div>
+        <div className="searchcategory">Поиск по названию</div>
         <div className=" clearfon">
-      
           <input
             className="searchinput"
             {...register("name")}
             type="text"
             placeholder="example: car"
           />
-               <div className="searchresulttext">Результаты поиска:</div>
+          <div className="searchresulttext">Результаты поиска:</div>
 
           {newsList.length > 1 ? (
             <div className="result-search-category">
-              {newsList.length > 0 && <NewsListSearch ones={newsList.slice(0, 8)} />}
+              {newsList.length > 0 && (
+                <NewsListSearch ones={newsList.slice(0, 8)} />
+              )}
             </div>
           ) : (
             <>
               {" "}
               <div className="search-text">
-                Введите поисковый запрос<br/>для отображения результатов
+                Введите поисковый запрос
+                <br />
+                для отображения результатов
               </div>{" "}
             </>
           )}

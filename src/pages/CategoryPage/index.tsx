@@ -8,6 +8,8 @@ import { TypedDispatch } from "../../store";
 import NewsList from "components/NewList";
 import "./styles.scss";
 
+
+
 const CategoryPage = () => {
   const dispatch = useDispatch<TypedDispatch>();
   const newsList = useSelector(getFilmCategory);
@@ -23,6 +25,7 @@ const CategoryPage = () => {
         <div className="itemtext">
           {newsList.length > 0 && <NewsList list={newsList.slice(0, 8)} />}
         </div>
+
       </div>
     </div>
   );

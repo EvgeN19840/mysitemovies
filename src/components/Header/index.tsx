@@ -1,12 +1,11 @@
 import React from "react";
 import "./styles.scss";
-import { Switch } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { routeContact as routeContactPage } from "../../pages/ContactPage";
 import { routeMain as routeMainPage } from "../../pages/MainPage";
 import { routeCategory as routeCategoryPage } from "../../pages/CategoryPage";
 import { routeSearch as routeSearchPage } from "../../pages/SearchPage";
-import newlogo from "../../pictures/newlogo.png";
+
 
 const Header = () => {
   return (

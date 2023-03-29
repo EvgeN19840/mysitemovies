@@ -9,16 +9,15 @@ export interface IStore {
   list: INews[];
 }
 
-const movieReduserMainPage = (
-
+const movieReduserNextPage = (
   state: IStore = initialState,
   action: AnyAction
 ) => {
   switch (action.type) {
-    case "films/setFilms":
-      return { ...state, list: [...action.payload] };
+    case "cinema/setCinema":
+      return { ...state, list: action.payload };
     default:
       return state;
   }
 };
-export default movieReduserMainPage;
+export default movieReduserNextPage;

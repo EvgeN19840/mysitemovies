@@ -5,9 +5,10 @@ import movieReduserMainPage from "./mainpage/reducer"
 import movieReducer from './categorypage/reducer';
 import movieReduserDeteilPage from './deteilpage/reducer';
 import movieReduserSearchPage from './searchpage/reducer';
-
+import movieReduserNextPage from './nextpage/reducer';
 
 const rootReducer = combineReducers({
+    movieReduserNextPage,
     movieReduserMainPage,
     movieReducer,
     movieReduserDeteilPage,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
 const store = createStore( rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 export type ReduxState = ReturnType<typeof rootReducer>;
-export type TypedDispatch = ThunkDispatch<ReduxState, any, AnyAction>;
+export type RootState = ReturnType<typeof rootReducer>;
+export type TypedDispatch = ThunkDispatch<RootState, any, AnyAction>;
 
 export default store;
 
