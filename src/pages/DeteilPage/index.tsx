@@ -32,6 +32,20 @@ const DeteilPage = () => {
 
   let country = news.network?.country?.name && news.network.country.name;
 
+  let premiered = news?.premiered?.slice(0, 4);
+
+  if (news?.premiered?.slice(0, 4)) {
+    premiered = news.premiered.slice(0, 4) || premiered;
+  }
+
+
+  let summary = news?.summary?.replace(/[</p>]/gi, "");
+
+  if (news?.summary?.replace(/[</p>]/gi, "")) {
+    summary = news.summary.replace(/[</p>]/gi, "") || summary;
+  }
+
+
   return (
     <section className="container newsPostItem">
       {isLoading ? (
@@ -54,7 +68,7 @@ const DeteilPage = () => {
                 </div>
                 <div className="movis-old">
                   <div className="style-name-old">Год выхода:</div>{" "}
-                  {news.premiered.slice(0, 4)}
+                  {premiered}
                 </div>
                 <div className="movis-country-deteil">
                   <div className="style-name-country"> Страна: </div> {country}
@@ -72,7 +86,7 @@ const DeteilPage = () => {
 
                 <div className="movis-summary-deteil">
                   <div className="style-name-summary">Описание:</div>{" "}
-                  {news.summary.replace(/[</p>]/gi, "")}
+                  {summary}
                 </div>
               </div>
             </div>

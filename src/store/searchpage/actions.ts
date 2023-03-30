@@ -13,7 +13,6 @@ export const loadSearchPage =
     try {
       const response = await getNewCategory(category);
       dispatch(setSearchPage(response.data));
-      console.log(response.data)
     } catch (e) {
       console.log(e, "у нас проблемы!!!!");
     }

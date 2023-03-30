@@ -1,39 +1,46 @@
-ul {
-  list-style: none;
+.pagin {
   display: flex;
   justify-content: center;
+  margin-top: 5px;
 }
+
 li {
   display: inline;
   padding: 5px;
   font-size: 23px;
 }
+
 a {
   text-decoration: none;
-color: rgb(92, 92, 89);
-
+  color: rgb(92, 92, 89);
 }
-a:focus {
-    color: rgb(235, 160, 160);
-    background-color: rgb(116, 114, 112);
-height:auto;
-width:auto;
-border-radius: 5px;
-padding: 2px;
 
-  }
-  .button{
-    font-size: 20px;
-    color: azure;
-    background-color: rgb(116, 114, 112);
-height: 30px;
-width: 100px;
-border-radius: 5px;
+.a:focus
+ {
+  background-color: rgb(235, 160, 160);
+  padding: 3px;
+  color: azure;
+}
 
+li button {
+  font-size: 20px;
+  color: azure;
+  background-color: rgb(116, 114, 112);
+  height: 30px;
+  width: 100px;
+  border-radius: 5px;
+}
 
-  }
-  .button:focus {
-    color: rgb(235, 160, 160);
-    padding: 3px;
+li button:focus {
 
-  }
+  padding: 3px;
+}
+
+li button.active {
+  background-color: rgb(235, 160, 160);
+}
+
+li button:not(.active):hover {
+  background-color: rgb(62, 62, 61);
+  color: azure;
+}

@@ -12,7 +12,7 @@ import "./styles.scss";
 const MainPage = () => {
   const dispatch: TypedDispatch = useDispatch();
   const newsList = useSelector(getFilms);
-  const itemsPerPage = 10;
+  const itemsPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(10);
 
@@ -27,8 +27,12 @@ const MainPage = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    const newTotalPages = Math.ceil(newsList.length / itemsPerPage);
     if (page > 5) {
       setTotalPages(totalPages + 1);
+    }
+    if (totalPages >= newTotalPages) {
+      setTotalPages(totalPages);
     }
   };
 
