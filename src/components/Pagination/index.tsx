@@ -46,11 +46,12 @@ const Pagination = ({
 
   const getPageButtons = () => {
     const pageButtons = [];
+    const maxButtonsToShow = 7;
+  
+    let startIndex = Math.max(currentPage - Math.floor(maxButtonsToShow / 2), 1);
+    let endIndex = Math.min(startIndex + maxButtonsToShow - 1, totalPages);
 
-
-    let startIndex = Math.max(currentPage -3 , 1);
-    let endIndex = Math.min(currentPage + 3 , totalPages);
-
+  
     for (let i = startIndex; i <= endIndex; i++) {
       pageButtons.push(
         <button
@@ -65,9 +66,12 @@ const Pagination = ({
         </button>
       );
     }
-
+  
     return pageButtons;
   };
+  
+
+
 
   return (
     <ul className="pagin">
