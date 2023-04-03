@@ -2,24 +2,12 @@
   display: flex;
   justify-content: center;
   margin-top: 5px;
+  
 }
 
 li {
   display: inline;
-  padding: 5px;
   font-size: 23px;
-}
-
-a {
-  text-decoration: none;
-  color: rgb(92, 92, 89);
-}
-
-.a:focus
- {
-  background-color: rgb(235, 160, 160);
-  padding: 3px;
-  color: azure;
 }
 
 li button {
@@ -29,18 +17,27 @@ li button {
   height: 30px;
   width: 100px;
   border-radius: 5px;
-}
+  margin: 5px;
 
+}
 li button:focus {
-
-  padding: 3px;
-}
-
-li button.active {
   background-color: rgb(235, 160, 160);
+  padding: 3px;
+  color: azure;
 }
 
-li button:not(.active):hover {
-  background-color: rgb(62, 62, 61);
+
+
+li .page-button {
+  font-size: 20px;
+  color: azure;
+  background-color: rgb(116, 114, 112);
+
+  border-radius: 5px;
+  margin: 3px;
+}
+
+li .page-button.active {
+  background-color: rgb(235, 160, 160);
   color: azure;
 }

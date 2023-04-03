@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadMoviesMainPage } from "../../store/mainpage/actions";
 import { getFilms } from "../../store/mainpage/selector";
-import { RootState, TypedDispatch } from "../../store";
+import { TypedDispatch } from "../../store";
 import NewsList from "components/NewList";
 import Pagination from "../../components/Pagination";
 import { INews } from "types/INews";
@@ -14,33 +14,25 @@ const MainPage = () => {
   const newsList = useSelector(getFilms);
   const itemsPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(10);
-
-  const data = useSelector(
-    (state: RootState) => state.movieReduserMainPage.list
-  );
+  const [totalPages, setTotalPages] = useState(20);
   const [currentList, setCurrentList] = useState<INews[]>([]);
 
   useEffect(() => {
     dispatch(loadMoviesMainPage());
-  }, [dispatch]);
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    const newTotalPages = Math.ceil(newsList.length / itemsPerPage);
-    if (page > 5) {
-      setTotalPages(totalPages + 1);
-    }
-    if (totalPages >= newTotalPages) {
-      setTotalPages(totalPages);
-    }
-  };
-
-  useEffect(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     setCurrentList(newsList.slice(startIndex, endIndex));
-  }, [currentPage, itemsPerPage, newsList]);
+  }, [currentPage, itemsPerPage, newsList, dispatch]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    setCurrentList(newsList.slice(startIndex, endIndex));
+    if (currentList.length <= 0) {
+      setTotalPages(page);
+    }
+  };
 
   return (
     <main className="main-page">
@@ -51,7 +43,6 @@ const MainPage = () => {
         {currentList.length > 0 && <NewsList list={currentList} />}
       </div>
       <Pagination
-        data={data}
         itemsPerPage={itemsPerPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}

@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
-import { INews } from "types/INews";
+
 
 import "./styles.scss";
 
 interface Props {
-  data: INews[];
+
   itemsPerPage: number;
   totalPages: number;
   onPageChange: (page: number, itemsPerPage: number) => void;
@@ -33,29 +32,64 @@ const Pagination = ({
     handlePageChange(prevPage);
   };
 
+
+  const handleLastPageClick = () => {
+    handlePageChange(totalPages);
+  };
+
+  
+  const handleFirstPageClick = () => {
+    handlePageChange(1);
+  };
+
+
+
+  const getPageButtons = () => {
+    const pageButtons = [];
+
+
+    let startIndex = Math.max(currentPage -3 , 1);
+    let endIndex = Math.min(currentPage + 3 , totalPages);
+
+    for (let i = startIndex; i <= endIndex; i++) {
+      pageButtons.push(
+        <button
+          key={i}
+          className={`button page-button ${currentPage === i ? 'active' : ''}`}
+          onClick={(event) => {
+            event.preventDefault();
+            handlePageChange(i);
+          }}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    return pageButtons;
+  };
+
   return (
     <ul className="pagin">
+      <li className="first-page">
+        <button className="button" onClick={handleFirstPageClick}>
+          First Page
+        </button>
+      </li>
       <li className="prev-page">
         <button className="button" onClick={handlePrevPageClick}>
           Prev Page
         </button>
       </li>
-      {[...Array(totalPages)].map((e, index) => (
-        <li key={index}>
-          <button
-            className={currentPage === index + 1 ? "active button" : "button"}
-            onClick={(event) => {
-              event.preventDefault();
-              handlePageChange(index + 1);
-            }}
-          >
-            {index + 1}
-          </button>
-        </li>
-      ))}
+      <li className="numberButton">{getPageButtons()}</li>
       <li className="next-page">
         <button className="button" onClick={handleNextPageClick}>
           Next Page
+        </button>
+      </li>
+      <li className="last-page">
+        <button className="button" onClick={handleLastPageClick}>
+          Last Page
         </button>
       </li>
     </ul>
@@ -63,3 +97,6 @@ const Pagination = ({
 };
 
 export default Pagination;
+
+
+
