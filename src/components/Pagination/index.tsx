@@ -1,9 +1,6 @@
-
-
 import "./styles.scss";
 
 interface Props {
-
   itemsPerPage: number;
   totalPages: number;
   onPageChange: (page: number, itemsPerPage: number) => void;
@@ -32,31 +29,33 @@ const Pagination = ({
     handlePageChange(prevPage);
   };
 
-
   const handleLastPageClick = () => {
     handlePageChange(totalPages);
   };
 
-  
   const handleFirstPageClick = () => {
     handlePageChange(1);
   };
 
-
-
   const getPageButtons = () => {
     const pageButtons = [];
     const maxButtonsToShow = 7;
-  
-    let startIndex = Math.max(currentPage - Math.floor(maxButtonsToShow / 2), 1);
+
+    let startIndex = Math.max(
+      currentPage - Math.floor(maxButtonsToShow / 2),
+      1
+    );
     let endIndex = Math.min(startIndex + maxButtonsToShow - 1, totalPages);
 
-  
+    if (endIndex - startIndex < maxButtonsToShow - 1) {
+      startIndex = Math.max(endIndex - maxButtonsToShow + 1, 1);
+    }
+
     for (let i = startIndex; i <= endIndex; i++) {
       pageButtons.push(
         <button
           key={i}
-          className={`button page-button ${currentPage === i ? 'active' : ''}`}
+          className={`button page-button ${currentPage === i ? "active" : ""}`}
           onClick={(event) => {
             event.preventDefault();
             handlePageChange(i);
@@ -66,12 +65,9 @@ const Pagination = ({
         </button>
       );
     }
-  
+
     return pageButtons;
   };
-  
-
-
 
   return (
     <ul className="pagin">
@@ -101,6 +97,3 @@ const Pagination = ({
 };
 
 export default Pagination;
-
-
-

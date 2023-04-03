@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   margin-top: 5px;
-  
 }
 
 li {
@@ -18,15 +17,13 @@ li button {
   width: 100px;
   border-radius: 5px;
   margin: 5px;
-
+  cursor: pointer;
 }
 li button:hover {
   background-color: rgb(235, 160, 160);
   padding: 3px;
   color: azure;
 }
-
-
 
 li .page-button {
   font-size: 20px;
@@ -35,6 +32,7 @@ li .page-button {
 
   border-radius: 5px;
   margin: 3px;
+  cursor: pointer;
 }
 
 li .page-button.active {
