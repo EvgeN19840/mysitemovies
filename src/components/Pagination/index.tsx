@@ -73,23 +73,23 @@ const Pagination = ({
     <ul className="pagin">
       <li className="first-page">
         <button className="button" onClick={handleFirstPageClick}>
-          First Page
+          First
         </button>
       </li>
       <li className="prev-page">
         <button className="button" onClick={handlePrevPageClick}>
-          Prev Page
+          Prev
         </button>
       </li>
       <li className="numberButton">{getPageButtons()}</li>
       <li className="next-page">
         <button className="button" onClick={handleNextPageClick}>
-          Next Page
+          Next
         </button>
       </li>
       <li className="last-page">
         <button className="button" onClick={handleLastPageClick}>
-          Last Page
+          Last
         </button>
       </li>
     </ul>

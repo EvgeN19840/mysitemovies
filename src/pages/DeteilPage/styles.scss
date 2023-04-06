@@ -1,22 +1,22 @@
 .newsPostItem {
+  width: 100%;
   min-height: calc(100vh - 100px);
 }
 .newsDeteilWrapper {
-  display: inline-flex;
+  display: flex;
 
-  position: relative;
-  width: 1230px;
-  min-height: 546px;
-
-  top: 186px;
-  padding-top: 40.14px;
-  padding-left: 90px;
-
+width: auto;
+height: auto;
+  margin-top: 78px;
+  padding: 40px;
   background: #ebebeb;
   border-radius: 20px;
-  margin-bottom: 475px;
+
 }
+
 .movis-name-deteil {
+  display: flex;
+  position: relative;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
@@ -66,7 +66,7 @@
 .movis-country-deteil,
 .movis-language-deteil,
 .movis-genres-deteil,
-.movis-summary-deteil,
+
 .movis-old {
   display: flex;
   align-items: center;
@@ -74,24 +74,37 @@
   margin-bottom: 22px;
   color: #333333;
 }
+
+
 .movis-summary-deteil {
-  margin-right: 90px;
+  display: flex;
+  align-items: center;
+
+  color: #333333;
 }
 
 .imgdet {
   width: 229px;
   height: 339.22px;
   border-radius: 20px;
-  box-shadow: 0 -1px 3px 1px rgba(0,0,0,0.7);
+  box-shadow: 0 -1px 3px 1px rgba(0, 0, 0, 0.7);
+  margin-top: 7px;
   margin-right: 24px;
 }
-
-.starrat {
-  display: inline-flex;
-  position: absolute;
-  top: 42px;
-  right: 90px;
+.new-star-rat{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: flex-start;
 }
+.starrat {
+  display: flex;
+align-items: center;
+  max-width: 100px;
+}
+
+
+
 .rating {
   font-family: "Open Sans";
   font-style: normal;
@@ -104,5 +117,63 @@
 .img-star-deteil {
   width: 43px;
   height: 43.16px;
+}
+@media (max-width: 767px){
+ .starrat{
+  display: none;
+ }
+ .newsDeteilWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+ .wrapDeteilPage{
+  display: flex;
+  flex-direction: column;
+ }
+ .movis-name-deteil{
+  font-size: 20px;
+ }
+ .new-star-rat{
+  display: flex;
+justify-content: center;
+margin-top: 10px;
+
+}
+
+.style-name-old {
+  margin-right: 5px;
   
+
+}
+.style-name-country {
+  margin-right: 5px;
+
+}
+
+.style-name-language {
+  margin-right: 5px;
+
+}
+.style-name-genres {
+  margin-right: 5px;
+
+}
+.style-name-summary {
+  margin-right: 5px;
+
+}
+.movis-country-deteil,
+.movis-language-deteil,
+.movis-genres-deteil,
+
+.movis-old {
+  display: flex;
+justify-content: center;
+}
+.movis-summary-deteil {
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
 }

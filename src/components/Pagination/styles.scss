@@ -9,23 +9,24 @@ li {
   font-size: 23px;
 }
 
-li button {
+ button {
   font-size: 20px;
   color: azure;
   background-color: rgb(116, 114, 112);
   height: 30px;
-  width: 100px;
+  width: 50px;
   border-radius: 5px;
-  margin: 5px;
+  margin:  3px;
   cursor: pointer;
 }
-li button:hover {
+
+ button:hover {
   background-color: rgb(235, 160, 160);
-  padding: 3px;
+ 
   color: azure;
 }
 
-li .page-button {
+ .page-button {
   font-size: 20px;
   color: azure;
   background-color: rgb(116, 114, 112);
@@ -34,7 +35,26 @@ li .page-button {
   cursor: pointer;
 }
 
-li .page-button.active {
+ .page-button.active {
   background-color: rgb(235, 160, 160);
   color: azure;
 }
+@media (max-width: 820px){
+ button{
+  width: auto;
+  padding: 3px;
+ }
+  }
+  @media (max-width: 380px){
+    .first-page, .last-page{
+   display: none;
+    }
+     }
+     @media (max-width: 295px){
+      .first-page, .last-page, .prev-page, .next-page{
+     display: none;
+      }
+      .numberButton{
+        display: flex;
+      }
+       }

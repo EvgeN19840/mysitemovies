@@ -38,16 +38,15 @@ const DeteilPage = () => {
     premiered = news.premiered.slice(0, 4) || premiered;
   }
 
-
   let summary = news?.summary?.replace(/[</p>]/gi, "");
 
   if (news?.summary?.replace(/[</p>]/gi, "")) {
     summary = news.summary.replace(/[</p>]/gi, "") || summary;
   }
 
-
   return (
-    <section className="container newsPostItem">
+    <div className="newsPostItem">
+    <section className="container">
       {isLoading ? (
         <div className="lds-spinner">
           <div></div>
@@ -61,14 +60,15 @@ const DeteilPage = () => {
               <img className="imgdet" src={news.image.medium} alt={"poster"} />
 
               <div className="wrapDeteilPage">
-                <div className="movis-name-deteil">{news.name}</div>
-                <div className="starrat">
-                  <img className="img-star-deteil" src={star} alt={"star"} />
-                  <div className="rating">{news.rating.average}</div>
+                <div className="new-star-rat">
+                  <div className="starrat">
+                    <img className="img-star-deteil" src={star} alt={"star"} />
+                    <div className="rating">{news.rating.average}</div>
+                  </div>
+                  <div className="movis-name-deteil">{news.name}</div>
                 </div>
                 <div className="movis-old">
-                  <div className="style-name-old">Год выхода:</div>{" "}
-                  {premiered}
+                  <div className="style-name-old">Год выхода:</div> {premiered}
                 </div>
                 <div className="movis-country-deteil">
                   <div className="style-name-country"> Страна: </div> {country}
@@ -85,8 +85,7 @@ const DeteilPage = () => {
                 </div>
 
                 <div className="movis-summary-deteil">
-                  <div className="style-name-summary">Описание:</div>{" "}
-                  {summary}
+                  <div className="style-name-summary">Описание:</div> {summary}
                 </div>
               </div>
             </div>
@@ -96,6 +95,7 @@ const DeteilPage = () => {
         </>
       )}
     </section>
+    </div>
   );
 };
 
