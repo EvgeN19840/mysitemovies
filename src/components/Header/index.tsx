@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { routeContact as routeContactPage } from "../../pages/ContactPage";
 import { routeMain as routeMainPage } from "../../pages/MainPage";
 import { routeCategory as routeCategoryPage } from "../../pages/CategoryPage";
+import { routeCalendar as routeCalendarPage } from "../../pages/CalendarPage";
 import { routeSearch as routeSearchPage } from "../../pages/SearchPage";
 
 const Header = () => {
@@ -18,54 +19,61 @@ const Header = () => {
   return (
     <header className="header">
       <div className="navbar">
-      
-          <div className="logo-header">
-            <div className="logo-circle" />
-            <div className="logo-text">MOVIESinfo</div>
-          </div>
+        <div className="logo-header">
+          <div className="logo-circle" />
+          <div className="logo-text">MOVIESinfo</div>
+        </div>
 
-          <div className={`navbar-link body ${isActive ? "active" : ""}`}>
-            <NavLink
-              className="navbar-link-button"
-              to={routeMainPage()}
-              activeClassName={"linkActive"}
-              onClick={toggleActive}
-            >
-              Главная
-            </NavLink>
-            <NavLink
+        <div className={`navbar-link body ${isActive ? "active" : ""}`}>
+          <NavLink
+            className="navbar-link-button"
+            to={routeMainPage()}
+            activeClassName={"linkActive"}
+            onClick={toggleActive}
+          >
+          All movies
+          </NavLink>
+          {/* <NavLink
               className="navbar-link-button"
               to={routeCategoryPage()}
               activeClassName={"linkActive"}
               onClick={toggleActive}
             >
               Фильмы по категориям
-            </NavLink>
-            <NavLink
-              className="navbar-link-button"
-              to={routeSearchPage()}
-              activeClassName={"linkActive"}
-              onClick={toggleActive}
-            >
-              Поиск
-            </NavLink>
-            <NavLink
-              className="navbar-link-button"
-              to={routeContactPage()}
-              activeClassName={"linkActive"}
-              onClick={toggleActive}
-            >
-              О нас
-            </NavLink>
-          </div>
-          <div
-            className={`header-burger body ${isActive ? "active" : ""}`}
+            </NavLink> */}
+
+          <NavLink
+            className="navbar-link-button"
+            to={routeSearchPage()}
+            activeClassName={"linkActive"}
             onClick={toggleActive}
           >
-            <span></span>
-          </div>
+            Search
+          </NavLink>
+          <NavLink
+            className="navbar-link-button"
+            to={routeContactPage()}
+            activeClassName={"linkActive"}
+            onClick={toggleActive}
+          >
+            About
+          </NavLink>
+          <NavLink
+            className="navbar-link-button"
+            to={routeCalendarPage()}
+            activeClassName={"linkActive"}
+            onClick={toggleActive}
+          >
+            Calendar
+          </NavLink>
         </div>
-   
+        <div
+          className={`header-burger body ${isActive ? "active" : ""}`}
+          onClick={toggleActive}
+        >
+          <span></span>
+        </div>
+      </div>
     </header>
   );
 };
