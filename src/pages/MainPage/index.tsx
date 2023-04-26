@@ -19,6 +19,9 @@ const MainPage = () => {
 
   useEffect(() => {
     dispatch(loadMoviesMainPage());
+  }, []);
+
+  useEffect(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     setCurrentList(newsList.slice(startIndex, endIndex));
@@ -37,7 +40,7 @@ const MainPage = () => {
   return (
     <main className="main-page">
       <section className="main-text">
-        <div className="logo-main-text">Самый популярный портал о фильмах</div>
+        <h1 className="logo-main-text">Самый популярный портал о фильмах</h1>
       </section>
       <div className="container back-main">
         {currentList.length > 0 && <NewsList list={currentList} />}

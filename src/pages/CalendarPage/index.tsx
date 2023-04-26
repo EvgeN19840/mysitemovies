@@ -1,69 +1,48 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import routeCalendar from "./routes";
-
-import "./styles.scss";
-
-interface CalendarCellProps extends React.HTMLAttributes<HTMLDivElement> {
-  weekEndDay: boolean;
-  dayNumber: moment.Moment;
-  currentDay: boolean;
-  currentMonth: boolean;
-}
-
-const CalendarCell: React.FC<CalendarCellProps> = ({
-  weekEndDay,
-  dayNumber = moment(),
-  currentDay,
-  currentMonth,
-}) => {
-  return (
-    <div className={`calendar-wrap${currentMonth ? "-current" : ""}`}>
-      <div className={`calendar${weekEndDay ? "-weekend" : ""}`}>
-        <div className="wrap-cell">
-          <div className={`date-in-cell${currentDay ? "-current" : ""}`}>
-            {dayNumber.format("D")}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import CalendarCell from "./component/CalendarCell";
+import { loadMoviesMainPage } from "store/mainpage/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { TypedDispatch } from "store";
+import { getFilms } from "store/mainpage/selector";
 
 const CalendarPage = () => {
+  const dispatch: TypedDispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadMoviesMainPage());
+  }, []);
+  const newsList = useSelector(getFilms);
   const [dayNumber, setDayNumber] = useState(moment());
   const [currentMonth, setCurrentMonth] = useState(moment());
 
-  const totalDay = 42;
   const startDay = moment(dayNumber).startOf("month").startOf("week");
   const day = startDay.clone().subtract(1, "day");
-  const totalDayCalendar = [...Array(totalDay)].map(() =>
+  const totalDayCalendar = [...Array(42)].map(() =>          // 42 cell
     day.add(1, "day").clone()
   );
 
   const prevMonth = () => {
-    setDayNumber((prev) => prev.clone().subtract(1, "month"));
-    setCurrentMonth((prev) => prev.clone().subtract(1, "month"));
+    setDayNumber(() => dayNumber.clone().subtract(1, "month"));
+    setCurrentMonth(() => dayNumber.clone().subtract(1, "month"));
   };
 
   const nextMonth = () => {
-    setDayNumber((next) => next.clone().add(1, "month"));
-    setCurrentMonth((next) => next.clone().add(1, "month"));
+    setDayNumber(() => dayNumber.clone().add(1, "month"));
+    setCurrentMonth(() => dayNumber.clone().add(1, "month"));
   };
 
   const toDayHandler = () => {
     setDayNumber(moment());
     setCurrentMonth(moment());
   };
-  console.log(dayNumber);
-  console.log(moment().add(1, "month"));
+
   return (
     <div className="calendar-page">
       <div className="calendar-wrappper">
         <div className="month-handler-wrapp">
-       
-            <div className="handlers-and-current-month">
-          <div className="button-handler-month">
+          <div className="handlers-and-current-month">
+            <div className="button-handler-month">
               <button onClick={prevMonth}>&lt;</button>
               <button className="today-button" onClick={toDayHandler}>
                 Today
@@ -71,7 +50,7 @@ const CalendarPage = () => {
               <button onClick={nextMonth}>&gt;</button>
             </div>
             <div className="current-month-name">
-            {dayNumber.format("MMMM")} {dayNumber.format("YYYY")}
+              {dayNumber.format("MMMM")} {dayNumber.format("YYYY")}
             </div>
           </div>
           <div className="weekd-day">
@@ -91,6 +70,10 @@ const CalendarPage = () => {
                 dayNumber={dayNumber}
                 currentDay={dayNumber.isSame(moment(), "day")}
                 currentMonth={dayNumber.isSame(currentMonth, "month")}
+                premiered={newsList.some(
+                  (item) =>
+                    item.premiered.slice(5) === dayNumber.format("MM-DD")
+                )}
               ></CalendarCell>
             ))}
           </div>

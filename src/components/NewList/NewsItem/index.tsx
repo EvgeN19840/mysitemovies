@@ -21,7 +21,7 @@ const setCountryCode: { [key: string]: string } = {
   US: "United States",
 };
 
-const NewsItem: React.FC<INewsItemParams> = ({ item }) => {
+const NewsItem = ({ item }:INewsItemParams) => {
   let countryCode = item?.show?.network?.country?.code;
 
   if (item?.network?.country?.code) {
@@ -76,6 +76,7 @@ const NewsItem: React.FC<INewsItemParams> = ({ item }) => {
   if (item?.id) {
     id = item.id || id;
   }
+
   return (
     <NavLink className="wrap-setitem" to={routeDeteil(id)}>
       <div className="about-movis-wrap">

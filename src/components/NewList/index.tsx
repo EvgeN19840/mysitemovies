@@ -8,7 +8,7 @@ interface INewsListParams {
   
 }
 
-const NewsList: React.FC<INewsListParams> = ({ list }) => (
+const NewsList = ({ list }: INewsListParams) => (
   <div className="newslist">
     {list.map((news, index) => (
       <NewsItem key={index} item={news} />

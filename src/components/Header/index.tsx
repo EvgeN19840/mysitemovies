@@ -24,7 +24,8 @@ const Header = () => {
           <div className="logo-text">MOVIESinfo</div>
         </div>
 
-        <div className={`navbar-link body ${isActive ? "active" : ""}`}>
+        <nav className={`navbar-link body ${isActive ? "active" : ""}`}>
+          <ul className="navbar-link">
           <NavLink
             className="navbar-link-button"
             to={routeMainPage()}
@@ -66,14 +67,15 @@ const Header = () => {
           >
             Calendar
           </NavLink>
-        </div>
+          </ul>
+      </nav>
         <div
           className={`header-burger body ${isActive ? "active" : ""}`}
           onClick={toggleActive}
         >
           <span></span>
         </div>
-      </div>
+     </div>
     </header>
   );
 };

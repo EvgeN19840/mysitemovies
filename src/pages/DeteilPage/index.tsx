@@ -46,55 +46,66 @@ const DeteilPage = () => {
 
   return (
     <div className="newsPostItem">
-    <section className="container">
-      {isLoading ? (
-        <div className="lds-spinner">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      ) : (
-        <>
-          {news.id ? (
-            <div className="newsDeteilWrapper">
-              <img className="imgdet" src={news.image.medium} alt={"poster"} />
+      <section className="container">
+        {isLoading ? (
+          <div className="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        ) : (
+          <>
+            {news.id ? (
+              <div className="newsDeteilWrapper">
+                <img
+                  className="imgdet"
+                  src={news.image.medium}
+                  alt={"poster"}
+                />
 
-              <div className="wrapDeteilPage">
-                <div className="new-star-rat">
-                  <div className="starrat">
-                    <img className="img-star-deteil" src={star} alt={"star"} />
-                    <div className="rating">{news.rating.average}</div>
+                <div className="wrapDeteilPage">
+                  <div className="new-star-rat">
+                    <div className="starrat">
+                      <img
+                        className="img-star-deteil"
+                        src={star}
+                        alt={"star"}
+                      />
+                      <div className="rating">{news.rating.average}</div>
+                    </div>
+                    <div className="movis-name-deteil">{news.name}</div>
                   </div>
-                  <div className="movis-name-deteil">{news.name}</div>
-                </div>
-                <div className="movis-old">
-                  <div className="style-name-old">Год выхода:</div> {premiered}
-                </div>
-                <div className="movis-country-deteil">
-                  <div className="style-name-country"> Страна: </div> {country}
-                </div>
+                  <div className="movis-old">
+                    <div className="style-name-old">Год выхода:</div>{" "}
+                    {premiered}
+                  </div>
+                  <div className="movis-country-deteil">
+                    <div className="style-name-country"> Страна: </div>{" "}
+                    {country}
+                  </div>
 
-                <div className="movis-genres-deteil">
-                  <div className="style-name-genres"> Жанр:</div>{" "}
-                  {news.genres.join(", ")}{" "}
-                </div>
+                  <div className="movis-genres-deteil">
+                    <div className="style-name-genres"> Жанр:</div>{" "}
+                    {news.genres.join(", ")}{" "}
+                  </div>
 
-                <div className="movis-language-deteil">
-                  <div className="style-name-language"> Язык:</div>{" "}
-                  {news.language}{" "}
-                </div>
+                  <div className="movis-language-deteil">
+                    <div className="style-name-language"> Язык:</div>{" "}
+                    {news.language}{" "}
+                  </div>
 
-                <div className="movis-summary-deteil">
-                  <div className="style-name-summary">Описание:</div> {summary}
+                  <div className="movis-summary-deteil">
+                    <div className="style-name-summary">Описание:</div>{" "}
+                    {summary}
+                  </div>
                 </div>
               </div>
-            </div>
-          ) : (
-            <> </>
-          )}
-        </>
-      )}
-    </section>
+            ) : (
+              <> </>
+            )}
+          </>
+        )}
+      </section>
     </div>
   );
 };
