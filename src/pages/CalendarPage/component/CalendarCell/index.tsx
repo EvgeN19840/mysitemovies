@@ -18,6 +18,12 @@ const CalendarCell = ({
   currentMonth,
   premiered,
 }: CalendarCellProps) => {
+  const handleClick = () => {
+    if (premiered) {
+      console.log("Click");
+    }
+  };
+
   return (
     <div className={`calendar-wrap${currentMonth ? "-current" : ""}`}>
       <div className={`wrap${premiered ? "-movies" : ""}`}>
@@ -32,4 +38,5 @@ const CalendarCell = ({
     </div>
   );
 };
+
 export default CalendarCell;
