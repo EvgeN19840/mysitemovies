@@ -18,6 +18,7 @@ const CalendarCell = ({
   currentMonth,
   premiered,
 }: CalendarCellProps) => {
+  
   const handleClick = () => {
     if (premiered) {
       console.log("Click");
@@ -27,8 +28,7 @@ const CalendarCell = ({
   return (
     <div
       className={`calendar-wrap${currentMonth ? "-current" : ""}`}
-      onClick={handleClick}
-    >
+      onClick={handleClick}>
       <div className={`wrap${premiered ? "-movies" : ""}`}>
         <div className={`calendar${weekEndDay ? "-weekend" : ""}`}>
           <div className="wrap-cell">
