@@ -64,17 +64,27 @@ const CalendarPage = () => {
         <div className="month-now">
           <div className="calendar-grid">
             {totalDayCalendar.map((dayNumber) => (
-              <CalendarCell
-                key={dayNumber.unix()}
-                weekEndDay={dayNumber.day() === 6 || dayNumber.day() === 0}
-                dayNumber={dayNumber}
-                currentDay={dayNumber.isSame(moment(), "day")}
-                currentMonth={dayNumber.isSame(currentMonth, "month")}
-                premiered={newsList.some(
-                  (item) =>
-                    item.premiered.slice(5) === dayNumber.format("MM-DD")
-                )}
-              ></CalendarCell>
+        <CalendarCell
+        key={dayNumber.unix()}
+        weekEndDay={dayNumber.day() === 6 || dayNumber.day() === 0}
+        dayNumber={dayNumber}
+        currentDay={dayNumber.isSame(moment(), "day")}
+        currentMonth={dayNumber.isSame(currentMonth, "month")}
+        premiered={
+          newsList.some(
+            (item) =>
+              new Date(item.premiered.slice(5)).getTime() ===
+                new Date(dayNumber.format("MM-DD")).getTime() && item.name
+          ) && true
+        }
+        name={
+          newsList.find(
+            (item) =>
+              new Date(item.premiered.slice(5)).getTime() ===
+                new Date(dayNumber.format("MM-DD")).getTime()
+          )?.name || ""
+        }
+      ></CalendarCell>
             ))}
           </div>
         </div>

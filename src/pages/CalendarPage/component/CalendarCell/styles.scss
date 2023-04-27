@@ -1,10 +1,20 @@
+
 .calendar-page {
   min-height: calc(100vh - 140px);
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
+.main-wrap{
 
+  border: 0.5px solid #8b8787;
+}
+.calendar-wrap{
+
+  display: flex;
+  flex-direction: row-reverse;
+
+}
 .calendar-wrappper {
   min-width: 90%;
   min-height: 40%;
@@ -22,7 +32,7 @@
 
 .wrap-cell {
   display: flex;
-  justify-content: flex-end;
+align-items: center;
 }
 
 .date-in-cell {
@@ -38,6 +48,10 @@
   background-color: #484747;
   min-width: 70px;
   min-height: 50px;
+  display: flex;
+  flex-direction: column;
+
+  
 }
 
 .current-month-name {
@@ -63,6 +77,7 @@
   justify-content: space-around;
   color: #dddcdd;
   font-size: 20px;
+
 }
 
 .button-handler-month {
@@ -75,6 +90,9 @@
 
 .calendar-wrap-current {
   color: #fff;
+
+  display: flex;
+  flex-direction: row-reverse;
 }
 .month-now {
   border-radius: 10px;
@@ -89,7 +107,14 @@
   padding: 5px;
 }
 
+.name-movies-cell{
+  font-size: 10px;
+
+}
 .wrap-movies{
-  color: green;
+  display: flex;
+  align-items: center;
   cursor: pointer;
+
+
 }
