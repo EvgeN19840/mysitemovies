@@ -1,5 +1,6 @@
 import moment from "moment";
-
+import { NavLink } from "react-router-dom";
+import { routeDeteil } from "pages/DeteilPage";
 import "./styles.scss";
 
 interface CalendarCellProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -9,6 +10,7 @@ interface CalendarCellProps extends React.HTMLAttributes<HTMLDivElement> {
   currentMonth: boolean;
   premiered: boolean;
   name: string;
+  id?: string;
 }
 
 const CalendarCell = ({
@@ -18,29 +20,23 @@ const CalendarCell = ({
   currentMonth,
   premiered,
   name,
+  id,
 }: CalendarCellProps) => {
-  const handleClick = () => {
-    if (premiered) {
-      console.log("Click");
-    }
-  };
-
   return (
     <div className="main-wrap">
-        <div className={`calendar${weekEndDay ? "-weekend" : ""}`}>
-    <div
-      className={`calendar-wrap${currentMonth ? "-current" : ""}`}
-      onClick={handleClick}
-    >
-  
+      <div className={`calendar${weekEndDay ? "-weekend" : ""}`}>
+        <div className={`calendar-wrap${currentMonth ? "-current" : ""}`}>
           <div className="wrap-cell">
-          <div className={`wrap${premiered ? "-movies" : ""}`}>
-        {premiered && name && <div className="name-movies-cell">{name}</div>}
-      
-            <div className={`date-in-cell${currentDay ? "-current" : ""}`}>
-              {dayNumber.format("D")}
+            <div className={`wrap${premiered ? "-movies" : ""}`}>
+              {premiered && name && (
+                <NavLink className="wrap-setitem" to={routeDeteil(`${id}`)}>
+                  <div className="name-movies-cell">{name}</div>
+                </NavLink>
+              )}
+              <div className={`date-in-cell${currentDay ? "-current" : ""}`}>
+                {dayNumber.format("D")}
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </div>

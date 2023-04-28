@@ -76,7 +76,6 @@ const NewsItem = ({ item }:INewsItemParams) => {
   if (item?.id) {
     id = item.id || id;
   }
-
   return (
     <NavLink className="wrap-setitem" to={routeDeteil(id)}>
       <div className="about-movis-wrap">

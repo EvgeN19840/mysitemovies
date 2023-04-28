@@ -6,8 +6,13 @@ import { loadMoviesMainPage } from "store/mainpage/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { TypedDispatch } from "store";
 import { getFilms } from "store/mainpage/selector";
+import { INews } from "types/INews";
 
-const CalendarPage = () => {
+interface INewsItemParams {
+  item: INews;
+}
+
+const CalendarPage = ({ item }: INewsItemParams) => {
   const dispatch: TypedDispatch = useDispatch();
   useEffect(() => {
     dispatch(loadMoviesMainPage());
@@ -18,7 +23,7 @@ const CalendarPage = () => {
 
   const startDay = moment(dayNumber).startOf("month").startOf("week");
   const day = startDay.clone().subtract(1, "day");
-  const totalDayCalendar = [...Array(42)].map(() =>          // 42 cell
+  const totalDayCalendar = [...Array(42)].map(() =>       // 42 cell
     day.add(1, "day").clone()
   );
 
@@ -64,27 +69,36 @@ const CalendarPage = () => {
         <div className="month-now">
           <div className="calendar-grid">
             {totalDayCalendar.map((dayNumber) => (
-        <CalendarCell
-        key={dayNumber.unix()}
-        weekEndDay={dayNumber.day() === 6 || dayNumber.day() === 0}
-        dayNumber={dayNumber}
-        currentDay={dayNumber.isSame(moment(), "day")}
-        currentMonth={dayNumber.isSame(currentMonth, "month")}
-        premiered={
-          newsList.some(
-            (item) =>
-              new Date(item.premiered.slice(5)).getTime() ===
-                new Date(dayNumber.format("MM-DD")).getTime() && item.name
-          ) && true
-        }
-        name={
-          newsList.find(
-            (item) =>
-              new Date(item.premiered.slice(5)).getTime() ===
-                new Date(dayNumber.format("MM-DD")).getTime()
-          )?.name || ""
-        }
-      ></CalendarCell>
+              <CalendarCell
+                key={dayNumber.unix()}
+                weekEndDay={dayNumber.day() === 6 || dayNumber.day() === 0}
+                dayNumber={dayNumber}
+                currentDay={dayNumber.isSame(moment(), "day")}
+                currentMonth={dayNumber.isSame(currentMonth, "month")}
+                premiered={
+                  newsList.some(
+                    (item) =>
+                      new Date(item.premiered.slice(5)).getTime() ===
+                        new Date(dayNumber.format("MM-DD")).getTime() &&
+                      item.name &&
+                      item.id
+                  ) && true
+                }
+                name={
+                  newsList.find(
+                    (item) =>
+                      new Date(item.premiered.slice(5)).getTime() ===
+                      new Date(dayNumber.format("MM-DD")).getTime()
+                  )?.name || ""
+                }
+                id={
+                  newsList.find(
+                    (item) =>
+                      new Date(item.premiered.slice(5)).getTime() ===
+                      new Date(dayNumber.format("MM-DD")).getTime()
+                  )?.id
+                }
+              ></CalendarCell>
             ))}
           </div>
         </div>
@@ -94,7 +108,3 @@ const CalendarPage = () => {
 };
 export { routeCalendar };
 export default CalendarPage;
-
-
-
-
