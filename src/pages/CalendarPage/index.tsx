@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { MouseEvent, useEffect, useState } from "react";
 import moment from "moment";
 import routeCalendar from "./routes";
 import CalendarCell from "./component/CalendarCell";
@@ -23,7 +23,8 @@ const CalendarPage = ({ item }: INewsItemParams) => {
 
   const startDay = moment(dayNumber).startOf("month").startOf("week");
   const day = startDay.clone().subtract(1, "day");
-  const totalDayCalendar = [...Array(42)].map(() =>       // 42 cell
+  const totalDayCalendar = [...Array(42)].map(() =>
+    // 42 cell
     day.add(1, "day").clone()
   );
 

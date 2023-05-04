@@ -9,6 +9,7 @@ import ContactPage, {
 import MainPage, { routeMain as routeMainPage } from "../../pages/MainPage";
 import CategoryPage, { routeCategory as routeCategoryPage,} from "../../pages/CategoryPage";
 import CalendarPage, { routeCalendar as routeCalendarPage,} from "../../pages/CalendarPage";
+import CalenderMoviesPage, { routeCalenderMovies as routeCalenderMoviesPage,} from "../../pages/CalenderMoviesPage";
 import SearchPage, {
   routeSearch as routeSearchPage,
 } from "../../pages/SearchPage";
@@ -28,6 +29,7 @@ const AppConnect = () => {
         <Route exact path={routeCalendarPage()} component={CalendarPage} />
         <Route exact path={routeSearchPage()} component={SearchPage} />
         <Route exact path={routeContactPage()} component={ContactPage} />
+               <Route exact path={routeCalenderMoviesPage()} component={CalenderMoviesPage} />
         <Redirect
           to={{
             pathname: routeMainPage(),
