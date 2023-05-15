@@ -7,12 +7,8 @@ import ContactPage, {
   routeContact as routeContactPage,
 } from "../../pages/ContactPage";
 import MainPage, { routeMain as routeMainPage } from "../../pages/MainPage";
-import CategoryPage, {
-  routeCategory as routeCategoryPage,
-} from "../../pages/CategoryPage";
-import CalendarPage, {
-  routeCalendar as routeCalendarPage,
-} from "../../pages/CalendarPage";
+import CategoryPage, { routeCategory as routeCategoryPage,} from "../../pages/CategoryPage";
+import CalendarPage, { routeCalendar as routeCalendarPage,} from "../../pages/CalendarPage";
 
 import SearchPage, {
   routeSearch as routeSearchPage,
@@ -33,6 +29,7 @@ const AppConnect = () => {
         <Route exact path={routeCalendarPage()} component={CalendarPage} />
         <Route exact path={routeSearchPage()} component={SearchPage} />
         <Route exact path={routeContactPage()} component={ContactPage} />
+
         <Redirect
           to={{
             pathname: routeMainPage(),

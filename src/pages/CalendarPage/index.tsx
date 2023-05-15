@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TypedDispatch } from "store";
 import { getFilms } from "store/mainpage/selector";
 import { INews } from "types/INews";
-
+import PrevInfoMovis from "./component/CalendarCell/PrevInfoMovis";
 interface INewsItemParams {
   item: INews;
 }
@@ -20,6 +20,17 @@ const CalendarPage = ({ item }: INewsItemParams) => {
   const newsList = useSelector(getFilms);
   const [dayNumber, setDayNumber] = useState(moment());
   const [currentMonth, setCurrentMonth] = useState(moment());
+
+const [idPrevMovis, setIdPrevMovis] = useState<number | null>(null)
+const [showPrev, setShowPrev]= useState<boolean>(false)
+
+useEffect(()=>{
+  if(!idPrevMovis && showPrev){
+    setIdPrevMovis(null)
+  }
+
+}, [idPrevMovis, setIdPrevMovis, showPrev])
+
 
   const startDay = moment(dayNumber).startOf("month").startOf("week");
   const day = startDay.clone().subtract(1, "day");
@@ -99,11 +110,15 @@ const CalendarPage = ({ item }: INewsItemParams) => {
                       new Date(dayNumber.format("MM-DD")).getTime()
                   )?.id
                 }
+                idPrevMovis={idPrevMovis}
+                setIdPrevMovis={setIdPrevMovis}
+                setShowPrev={setShowPrev}
               ></CalendarCell>
             ))}
           </div>
         </div>
       </div>
+      {idPrevMovis &&showPrev && <PrevInfoMovis setShowPrev={setShowPrev}  idPrevMovis={idPrevMovis}/>}
     </div>
   );
 };

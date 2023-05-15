@@ -15,7 +15,12 @@ export const loadMovisDeteilPage =
     try {
       const response = await getOneNews(id);
       dispatch(setMoviesDeteilPage(response.data));
-    } catch (e) {
- 
-    }
+    } catch (e) {}
+  };
+export const loadMovisDeteilPrev =
+  (id: string) => async (dispatch: TypedDispatch) => {
+    try {
+      const response = await getOneNews(id);
+      return response;
+    } catch (e) {}
   };

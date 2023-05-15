@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import moment, { Moment } from "moment";
 import "./styles.scss";
 import { routeDeteil } from "pages/DeteilPage";
+import PrevInfoMovis from "./PrevInfoMovis";
 
 interface CalendarCellProps {
   weekEndDay: boolean;
@@ -12,6 +13,9 @@ interface CalendarCellProps {
   premiered: boolean;
   name: string;
   id?: string;
+  idPrevMovis: number | null;
+  setShowPrev: (value: boolean) => void;
+  setIdPrevMovis: (value: number) => void;
 }
 
 const CalendarCell = ({
@@ -22,26 +26,35 @@ const CalendarCell = ({
   premiered,
   name,
   id,
+  idPrevMovis,
+  setIdPrevMovis,
+  setShowPrev,
 }: CalendarCellProps) => {
-  const [selectedDay, setSelectedDay] = useState<Moment | undefined>(undefined);
-  useEffect(() => {
-    setSelectedDay(dayNumber);
-  }, []);
-
+  const handleMouseEnter = useCallback(() => {
+    setShowPrev(true);
+    setIdPrevMovis(Number(id));
+  }, [setShowPrev, setIdPrevMovis, id]);
+const handleMouseLeave = useCallback(() => {
+  setShowPrev(false);
+  setIdPrevMovis(Number(id));
+}, [setShowPrev, setIdPrevMovis, id]);
   return (
-    <div className="main-wrap">
+    <div className={`main-wrap${premiered ? "-movies" : ""}`}>
       <div className={`calendar${weekEndDay ? "-weekend" : ""}`}>
         <div className={`calendar-wrap${currentMonth ? "-current" : ""}`}>
           <div className="wrap-cell">
-            <div className={`wrap${premiered ? "-movies" : ""}`}>
-              {premiered && name && (
-                <NavLink className="wrap-setitem" to={routeDeteil(`${id}`)}>
+            {premiered && name && (
+              <div onMouseEnter={handleMouseEnter} className="name-movies-cell">
+                <div onMouseLeave={handleMouseLeave}>
+                <NavLink className="wrap-setitem" to={routeDeteil(id)}>
                   <div className="name-movies-cell">{name}</div>
                 </NavLink>
-              )}
-              <div className={`date-in-cell${currentDay ? "-current" : ""}`}>
-                {dayNumber.format("D")}
               </div>
+              </div>
+            )}
+
+            <div className={`date-in-cell${currentDay ? "-current" : ""}`}>
+              {dayNumber?.format("DD")}
             </div>
           </div>
         </div>
@@ -49,4 +62,5 @@ const CalendarCell = ({
     </div>
   );
 };
+
 export default CalendarCell;
